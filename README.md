@@ -478,12 +478,11 @@ Let's dive deeper into the Laravel request lifecycle.
    require __DIR__.'/../vendor/autoload.php';
    ```
 
-   - Quest travels through the `Bootstrap` layer and lands in the `Kernel`. However, `Middleware` is not yet applied.
+   - Request travels through the `Bootstrap` layer and lands in the `Kernel`. However, `Middleware` is not yet applied.
 
 
 2. **HTTP Kernel**:
-</br>
-   
+
     - Laravel trusts the HTTP Kernel with assigning \textbf{global middleware}.
     - `App\Http\Kernel` houses both the global middleware and approach to invoking route middleware.
     - Using `\Illuminate\Foundation\Http\Kernel`, the quest arrives at the `\Illuminate\Foundation\Application`.
@@ -494,7 +493,7 @@ Let's dive deeper into the Laravel request lifecycle.
        \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
        // More global middleware go here
    ];
-    ```
+   ```
 
 
 3. **Routing**:
@@ -514,8 +513,7 @@ Let's dive deeper into the Laravel request lifecycle.
     ```
 
 4. **Controller**:
-</br>
-
+     
      - The route delegates the quest to an assigned controller together. The method on the controller then processes the quest.
      - If applicable, **the controller method returns a response**. Laravel, naturally, transforms this into an HTTP response.
 
@@ -527,7 +525,7 @@ Let's dive deeper into the Laravel request lifecycle.
    }
    ```
 
-5. **Response**:
+6. **Response**:
 
      - The created response passes through \textbf{middleware} once again, if there might exist any.
      - Lastly, Laravel sends the response back to the customer.
@@ -689,18 +687,6 @@ class Phone extends Model
     }
 }
 ```
-
-### Best Practices for Eloquent
-
-1. **Mind the N+1 Problem**: Use eager loading to minimize the number of queries to the database.
-
-2. **Keep It Consistent**: Abide by Laravel's conventions to ensure smooth sailing.
-
-3. **Fail Early**: Utilize strict type casting and validation to catch issues at the earliest opportunity.
-
-4. **Stay Efficient**: Make your queries as efficient as possible by utilizing the many optimizing features of Eloquent.
-
-5. **Test Thoroughly**: Always validate your model's methods and relationships to ensure they perform as expected.
 <br>
 
 ## 10. How does one perform _validations_ in _Laravel_?
