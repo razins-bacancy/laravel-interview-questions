@@ -525,7 +525,7 @@ Let's dive deeper into the Laravel request lifecycle.
    }
    ```
 
-6. **Response**:
+5. **Response**:
 
      - The created response passes through \textbf{middleware} once again, if there might exist any.
      - Lastly, Laravel sends the response back to the customer.
